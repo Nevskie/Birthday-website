@@ -20,9 +20,13 @@ const btn = document.getElementById("surpriseBtn");
 const popup = document.getElementById("birthdayPopup");
 const close = document.querySelector(".close");
 
+const music = document.getElementById("birthdayMusic");
+
 btn.addEventListener("click", () => {
     popup.style.display = "flex";
     createConfetti();
+
+    music.play();
 });
 
 close.addEventListener("click", () => {
