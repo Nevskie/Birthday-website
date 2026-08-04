@@ -19,23 +19,35 @@ for (let i = 0; i < 25; i++) {
 const btn = document.getElementById("surpriseBtn");
 const popup = document.getElementById("birthdayPopup");
 const close = document.querySelector(".close");
-
 const music = document.getElementById("birthdayMusic");
 
 btn.addEventListener("click", () => {
     popup.style.display = "flex";
     createConfetti();
 
-    music.play();
+    if (music) {
+        music.currentTime = 0;
+        music.play();
+    }
 });
 
+// Close using X button
 close.addEventListener("click", () => {
     popup.style.display = "none";
+
+    if (music) {
+        music.pause();
+    }
 });
 
+// Close when clicking outside the popup
 window.addEventListener("click", (e) => {
     if (e.target === popup) {
         popup.style.display = "none";
+
+        if (music) {
+            music.pause();
+        }
     }
 });
 
